@@ -62,7 +62,7 @@ router.post(
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
-      res.json({ token });
+      res.json({ user:username, token });
     } catch (error) {
       res.status(500).json({ message: "Internal server error" });
     }
