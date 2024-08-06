@@ -5,8 +5,15 @@ const { User, Product } = require("./models");
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
 const authMiddleware = require("./middleware/auth");
+const cors = require('cors')
 require('dotenv').config();
 const app = express();
+
+
+// Enable CORS
+app.use(cors());
+
+// Parse JSON bodies (as sent by API clients)
 app.use(bodyParser.json());
 
 // Set up morgan for logging HTTP requests
@@ -23,6 +30,7 @@ app.use("/auth", authRoutes);
 // Protected Routes
 app.use("/products", authMiddleware, productRoutes);
 
+const PORT = process.env.PORT || 3000;
 app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+  console.log(`CORS-enabled web server listening on port ${PORT}`);
 });
