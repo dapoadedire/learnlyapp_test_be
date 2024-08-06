@@ -1,7 +1,6 @@
 const express = require("express");
 const morgan = require('morgan');
 const bodyParser = require("body-parser");
-const { User, Product } = require("./models");
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
 const authMiddleware = require("./middleware/auth");
